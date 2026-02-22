@@ -10,7 +10,12 @@ def youtube():
         return jsonify({"error": "Missing id"}), 400
 
     url = f"https://www.youtube.com/watch?v={video_id}"
-    ydl_opts = {"format": "bestaudio/best", "quiet": True, "noplaylist": True}
+    ydl_opts = {
+        "format": "bestaudio/best",
+        "quiet": True,
+        "noplaylist": True,
+        "cookiefile": "cookies.txt",
+    }
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
