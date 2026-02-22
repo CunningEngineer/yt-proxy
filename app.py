@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, jsonify
 import yt_dlp
+import os
 
 app = Flask(__name__)
 
@@ -10,11 +11,13 @@ def youtube():
         return jsonify({"error": "Missing id"}), 400
 
     url = f"https://www.youtube.com/watch?v={video_id}"
+    cookie_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cookies.txt")
+
     ydl_opts = {
         "format": "best",
         "quiet": True,
         "noplaylist": True,
-        "cookiefile": "cookies.txt",
+        "cookiefile": cookie_path,
     }
 
     try:
