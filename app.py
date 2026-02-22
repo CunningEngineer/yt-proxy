@@ -11,7 +11,7 @@ def youtube():
 
     url = f"https://www.youtube.com/watch?v={video_id}"
     ydl_opts = {
-        "format": "bestaudio/best",
+        "format": "bestaudio/best[ext=webm]/best[ext=mp4]/best",
         "quiet": True,
         "noplaylist": True,
         "cookiefile": "cookies.txt",
